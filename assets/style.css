@@ -1,0 +1,221 @@
+/* -------------------------------------------------
+   Global reset & typography – matches the Adobe XD
+   ------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.5;
+  color: #222;
+  background: #f5f7fa;
+}
+body {
+  min-height: 100vh;
+}
+/* -------------------------------------------------
+   Layout – CSS Grid for the three columns
+   ------------------------------------------------- */
+.dashboard {
+  display: grid;
+  grid-template-columns: 260px 1fr 300px;
+  gap: 20px;
+  padding: 20px;
+}
+/* Responsive break‑points */
+@media (max-width: 1024px) {
+  .dashboard {
+    grid-template-columns: 200px 1fr;
+  }
+  .right-panel {
+    display: none; /* hide right panel on narrow screens */
+  }
+}
+@media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: static;
+    height: auto;
+    border-right: none;
+  }
+}
+/* -------------------------------------------------
+   Sidebar
+   ------------------------------------------------- */
+.sidebar {
+  background: #fff;
+  border-right: 1px solid #e2e6eb;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto;
+}
+.logo img {
+  width: 140px;
+  margin-bottom: 32px;
+}
+.nav ul {
+  list-style: none;
+  margin-bottom: 36px;
+}
+.nav li {
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #555;
+}
+.nav li.active,
+.nav li:hover {
+  background: #e6f0ff;
+  color: #0066ff;
+}
+.patients h3 {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+#patientList {
+  list-style: none;
+}
+#patientList li {
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#patientList li.selected,
+#patientList li:hover {
+  background: #d9e9ff;
+  color: #0066ff;
+}
+/* -------------------------------------------------
+   Main content
+   ------------------------------------------------- */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+/* Card base */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+/* Diagnosis table */
+.diagnosis-history table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.diagnosis-history th,
+.diagnosis-history td {
+  text-align: left;
+  padding: 8px 12px;
+}
+.diagnosis-history th {
+  background: #f0f4f8;
+  font-weight: 600;
+}
+.diagnosis-history tr:nth-child(even) {
+  background: #fafbfc;
+}
+/* Blood‑pressure chart container */
+.bp-chart {
+  height: 300px;
+}
+.bp-chart canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+/* Vital cards */
+.vitals {
+  display: flex;
+  gap: 20px;
+}
+.vital-card {
+  flex: 1;
+  text-align: center;
+}
+.vital-card h3 {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+.vital-card p {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+/* -------------------------------------------------
+   Right panel
+   ------------------------------------------------- */
+.right-panel {
+  background: #fff;
+  border-left: 1px solid #e2e6eb;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.profile {
+  text-align: center;
+}
+.profile img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+.profile h2 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+.profile p {
+  font-size: .9rem;
+  color: #666;
+  margin: 2px 0;
+}
+/* Lab results list */
+.lab-results ul {
+  list-style: none;
+}
+.lab-results li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eaecef;
+}
+.lab-results li:last-child {
+  border-bottom: none;
+}
+/* -------------------------------------------------
+   Loading overlay
+   ------------------------------------------------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #e0e0e0;
+  border-top-color: #0066ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+/* -------------------------------------------------
+   Utilities (optional)
+   ------------------------------------------------- */
+.hidden { display: none; }

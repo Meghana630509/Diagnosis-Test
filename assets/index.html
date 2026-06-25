@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medical Dashboard – Jessica Taylor</title>
+  <!-- Google Font – matches Adobe‑XD typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+  <!-- Chart.js CDN (v4) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"
+          defer></script>
+  <!-- Page styles & script -->
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Loading overlay (visible until data resolves) -->
+  <div id="loadingOverlay" class="overlay">
+    <div class="spinner"></div>
+  </div>
+  <!-- Main layout -->
+  <div class="dashboard">
+    <!-- ==================== LEFT SIDEBAR ==================== -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="assets/logo.svg" alt="Coalition Technologies" />
+      </div>
+      <nav class="nav">
+        <ul>
+          <li class="active">Dashboard</li>
+          <li>Appointments</li>
+          <li>Reports</li>
+          <li>Settings</li>
+        </ul>
+      </nav>
+      <section class="patients">
+        <h3>Patients</h3>
+        <ul id="patientList">
+          <!-- Patient list will be injected; Jessica Taylor gets .selected -->
+        </ul>
+      </section>
+    </aside>
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="main-content">
+      <!-- Diagnosis History Table -->
+      <section class="card diagnosis-history">
+        <h2>Diagnosis History</h2>
+        <table id="diagnosisTable">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Diagnosis</th>
+              <th>Doctor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- rows injected by JS -->
+          </tbody>
+        </table>
+      </section>
+      <!-- Blood Pressure Chart -->
+      <section class="card bp-chart">
+        <h2>Blood Pressure</h2>
+        <canvas id="bpChart"></canvas>
+      </section>
+      <!-- Vital Cards -->
+      <section class="vitals">
+        <article class="card vital-card">
+          <h3>Respiratory Rate</h3>
+          <p id="respRate">—</p>
+        </article>
+        <article class="card vital-card">
+          <h3>Temperature</h3>
+          <p id="temperature">—</p>
+        </article>
+        <article class="card vital-card">
+          <h3>Heart Rate</h3>
+          <p id="heartRate">—</p>
+        </article>
+      </section>
+    </main>
+    <!-- ==================== RIGHT PANEL ==================== -->
+    <aside class="right-panel">
+      <section class="card profile">
+        <img id="profileImg" src="assets/placeholder.png"
+             alt="Patient profile picture" />
+        <h2 id="patientName">—</h2>
+        <p id="patientGenderAge">—</p>
+        <p id="patientDOB">—</p>
+        <p id="patientPhone">—</p>
+        <p id="patientEmergency">—</p>
+        <p id="patientInsurance">—</p>
+      </section>
+      <section class="card lab-results">
+        <h2>Lab Results</h2>
+        <ul id="labResults">
+          <!-- Lab result items injected by JS -->
+        </ul>
+      </section>
+    </aside>
+  </div>
+</body>
+</html>
